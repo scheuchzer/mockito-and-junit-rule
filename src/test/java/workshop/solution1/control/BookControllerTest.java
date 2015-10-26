@@ -39,5 +39,6 @@ public class BookControllerTest {
         BookOverview actual = bookController.getOverview(222L);
         assertThat(actual.getTitle(), is("TestBook"));
         assertThat(actual.getAuthorNames().get(0), is("Mario"));
+
     }
 }

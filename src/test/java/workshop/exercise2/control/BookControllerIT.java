@@ -1,22 +1,16 @@
 package workshop.exercise2.control;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import org.junit.Rule;
 import org.junit.Test;
-import org.junit.rules.ExpectedException;
-import org.junit.rules.TemporaryFolder;
 import workshop.control.BookController;
 import workshop.control.BookOverview;
-import workshop.entity.Author;
-import workshop.entity.Book;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.Arrays;
 
 import static org.hamcrest.CoreMatchers.*;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 /**
  * Created by tho on 26.10.2015.
@@ -43,7 +37,8 @@ public class BookControllerIT {
         File baseDir = new File(".");
         try {
             new BookController(baseDir).getOverview(111L);
-        } catch(IllegalArgumentException e) {
+            fail();
+        } catch (IllegalArgumentException e) {
             assertTrue(e.getMessage().contains("111"));
         }
     }
