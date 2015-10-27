@@ -72,6 +72,41 @@
 						- Verify method calls
 
 
+						### What Mockito can't do
+						#### (what you shouldn't do anyway)
+
+						- stub static methods
+						- stub constructor calls
+						- mock final fields (used to work in older versions)
+						- mock final classes
+						- stub final methods
+
+
+						### What Mockito can't do
+						The tool for these things: 
+
+						[PowerMock](https://github.com/jayway/powermock)
+
+						- extends the Mockito API
+						- also supports EasyMock
+						- uses own ClassLoader
+						- modifies byte code
+
+
+						### What Mockito can't do
+
+						Don't use PowerMock for your own brand new code!
+
+						If you feel the urge to use it you probably have bad software design!
+
+
+						### Documentation
+
+						See JavaDoc!
+
+						http://site.mockito.org/mockito/docs/current/org/mockito/Mockito.html
+
+
 						### Mock objects
 
 						```java
@@ -81,12 +116,15 @@
 						better
 
 						```java
-						@Mock
-						private MyService myService
+						@RunWith(MockitoJUnitRunner.class)
+						public class MyTest {
+							@Mock
+							private MyService myService
+						}
 						```
 
 
-						### Stub methods calls
+						### Stub method calls
 
 						```java
 						when(myService.get(eq(1))).thenReturn("Hello World");
@@ -95,19 +133,23 @@
 						alternatives
 
 						```
+						// if when() can't do it
 						doReturn("Hello world").when(myService).get(eq(1));
-
+						// old school
 						stub(myService.get(eq(1))).toReturn("Hello World");
-
+						// Behaviour Driven Development
 						given(myService.get(eq(1))).thenReturn("Hello World");
 						```
 
 
 						### More stubbing
 
+						Exceptions
 						```
 						when(myService.get(any(Long.class))).thenTrow(new NotFoundException());
-
+						```
+						Dynamic Responses
+						```java
 						when(myService.get(anyLong()))
 						.thenAnswer(invocation -> "Hello to id "+ invocation.getArguments()[0]);
 						```
@@ -185,6 +227,14 @@
 
 						Useful if you test a `void` method and you want to 
 						ensure that some method has been called.
+
+
+						### Verify method calls - BDD
+
+						```java
+						myService.get(1);
+						then(myService).should(times(1)).get(eq(1));
+						```
 
 
 						### Remember
