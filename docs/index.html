@@ -425,8 +425,8 @@
 							public void testSomething() {
 								Account expected = generator.newAccount()
 									.withLogin("mylogin")
-									.withSurfBundle()
-									.withTvBundle(bundle -> bundle.locked(true))
+									.withProductFoo()
+									.withProductBar(product -> product.locked(true))
 									.withSomeMore();
 
 								Account actual = new AccountLoader()
