@@ -381,7 +381,7 @@
 						@Test
 						public void testSomething() throws Exception {
 							expectedException.expect(Exception.class);
-							expectedException.expectMetssage("Test");
+							expectedException.expectMessage("Test");
 							willThrowException();
 						}
 						```
@@ -408,7 +408,7 @@
 							@Test
 							public void testSomething() {
 								Account actual = new AccountLoader()
-										.getBySwisscomLogin("mylogin");
+										.getByLogin("mylogin");
 								...
 							}
 						}
@@ -424,13 +424,13 @@
 							@Test
 							public void testSomething() {
 								Account expected = generator.newAccount()
-									.withSwisscomLogin("mylogin")
+									.withLogin("mylogin")
 									.withSurfBundle()
 									.withTvBundle(bundle -> bundle.locked(true))
 									.withSomeMore();
 
 								Account actual = new AccountLoader()
-											.getBySwisscomLogin("mylogin");
+											.getByLogin("mylogin");
 								...
 							}
 						}
