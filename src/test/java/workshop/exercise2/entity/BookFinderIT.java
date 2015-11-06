@@ -24,7 +24,7 @@ public class BookFinderIT {
     @Test
     public void testFindById() throws JsonProcessingException {
         /**
-         * TODO: Refactor to JUnit Rules. Don't rely on files in the resources dir anymore. Maybe event write your own JUnit Rule!
+         * TODO: Refactor to JUnit Rules. Don't rely on files in the resources dir anymore. Maybe even write your own JUnit Rule!
          */
         File baseDir = new File("./src/test/resources");
         Optional<Book> actual = new BookFinder(baseDir).findById(123L);

@@ -7,7 +7,7 @@ import workshop.entity.BookFinder;
 import java.io.File;
 
 /**
- * A Book Controller  that uses old school manual wiring.
+ * A Book Controller  that uses old school manual wiring.¬
  */
 public class BookController {
 
